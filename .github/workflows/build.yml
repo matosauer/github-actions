@@ -1,11 +1,18 @@
+name: Node Continuous Integration
 on: push
 jobs:
     build-node:
+        name: Build and run Node.js Application
         runs-on: ubuntu-latest
         container: node:23.10.0
         steps:            
             - run: node --version
+              name: Check Node.js version
             - run: npm --version
+              name: Check npm version
             - uses: actions/checkout@v4
+              name: Checkout code from GitHub
             - run: npm install
+              name: Install NPM packages
             - run: node app.js
+              name: Run Node.js application
